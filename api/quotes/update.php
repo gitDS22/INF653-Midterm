@@ -29,17 +29,21 @@
     $quote_object->authorId = $data->authorId;
     $quote_object->categoryId = $data->categoryId;
 
+    //validate the input
+    if(empty($quote_object->quote) || empty($quote_object->authorId) || empty($quote_object->categoryId)) {
+        echo json_encode(
+            array('message' => 'Missing Required Parameters')
+        );
+            return;
+    }
     //Update the post
-    if($quote->update()) {
-        $quote_item = array(
+    if($quote_object->update()) {
+        $quote_object->read_single()
+       /* $quote_item = array(
             'id' => $quote_object->id,
             'quote' => $quote_object->quote,
             'authorId' => $quote_object->authorId,
             'categoryId' => $quote_object->categoryId
         );
-        echo json_encode($quote_item);
-    } else {
-        echo json_encode (
-            array('message' => 'Missing Required Parameters')
-        );
-    }
+        echo json_encode($quote_item);*/
+    } 

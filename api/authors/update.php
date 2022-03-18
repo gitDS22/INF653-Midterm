@@ -27,15 +27,19 @@
     //assign the data to author
     $author_object->author = $data->author;
 
+     //validate the input
+     if(empty($author_object->author)) {
+        echo json_encode(
+            array('message' => 'Missing Required Parameters')
+        );
+            return;
+    }
     //Update the post
     if($author_object->update()) {
-        $auth_item = array(
+        $author_object->read_single();
+        /*$auth_item = array(
             'id' => $author_object->id,
             'author' => $author_object->author   
         );
-        echo json_encode($auth_item);
-    } else {
-        echo json_encode (
-            array('message' => 'Missing Required Parameters')
-        );
-    }
+        echo json_encode($auth_item);*/
+    } 
