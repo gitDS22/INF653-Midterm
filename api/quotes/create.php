@@ -33,9 +33,9 @@
         );
             return;
     }
-
-    
-    
+    echo var_dump($data->quote);
+    echo var_dump($data->authorId);
+    echo var_dump($data->categoryId);
     //Create the post
     if($quote_object->create()) {
         $quote_item = array(

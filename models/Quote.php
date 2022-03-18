@@ -174,9 +174,7 @@
             //Create query
             $query = 'INSERT INTO ' . 
                 $this->table . 
-                ' (quote, authorId, categoryId) 
-                VALUES 
-                  (:quote, :authorId, :categoryId)';
+                ' (quote, authorId, categoryId) VALUES (:quote, :authorId, :categoryId)';
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
