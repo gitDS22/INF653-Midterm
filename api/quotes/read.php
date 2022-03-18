@@ -49,9 +49,7 @@
                 'id' => $id,
                 'quote' => html_entity_decode($quote),
                 'author' => $author,
-                //'authorId' => $authorId,
                 'category' => $category
-                //'categoryId' => $categoryId
             );
 
             //Push to "data"
