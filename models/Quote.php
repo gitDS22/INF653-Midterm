@@ -174,10 +174,6 @@
             //Create query
             $query = 'INSERT INTO ' . 
                 $this->table . 
-                /*'SET
-                    quote = :quote,
-                    authorId = :authorId,
-                    categoryId = :categoryId';*/
                 ' (quote, authorId, categoryId) 
                 VALUES 
                   (:quote, :authorId, :categoryId)';
@@ -203,7 +199,7 @@
             }
 
             //Print error if something goes wrong
-            //printf("Error: %s.\n",$stmt->error);
+            printf("Error: %s.\n",$stmt->error);
             return false;
         }
 
