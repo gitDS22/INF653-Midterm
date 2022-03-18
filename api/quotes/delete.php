@@ -24,14 +24,21 @@
     //Set ID to update
     $quote_object->id = $data->id;
 
+    //validate the input
+    if(empty($quote_object->id)) {
+        echo json_encode(
+            array('message' => 'Missing Required Parameters')
+        );
+            return;
+    }
     //Delete the post
     if($quote_object->delete()) {
         $quote_item = array(
             'id' => $quote_object->id
         );
         echo json_encode($quote_item);
-    } else {
+    } /*else {
         echo json_encode (
             array('message' => 'No Quotes Found')
         );
-    }
+    }*/

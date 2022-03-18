@@ -38,12 +38,11 @@
     }
     //Update the post
     if($quote_object->update()) {
-        $quote_object->read_single()
-       /* $quote_item = array(
+       $quote_item = array(
             'id' => $quote_object->id,
             'quote' => $quote_object->quote,
             'authorId' => $quote_object->authorId,
             'categoryId' => $quote_object->categoryId
         );
-        echo json_encode($quote_item);*/
+        echo json_encode($quote_item);
     } 

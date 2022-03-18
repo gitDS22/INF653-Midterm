@@ -24,14 +24,21 @@
     //Set ID to update
     $category_object->id = $data->id;
 
+    //validate the input
+    if(empty($category_object->id)) {
+        echo json_encode(
+            array('message' => 'Missing Required Parameters')
+        );
+            return;
+    }
     //Delete the post
     if($category_object->delete()) {
         $cat_item = array(
             'id' => $category_object->id
         );
         echo json_encode($cat_item);;
-    } else {
+    } /*else {
         echo json_encode (
             array('message' => 'Missing Required Parameters')
         );
-    }
+    }*/

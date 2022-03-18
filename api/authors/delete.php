@@ -24,6 +24,13 @@
     //Set ID to update
     $author_object->id = $data->id;
 
+    //validate the input
+    if(empty($author_object->id)) {
+        echo json_encode(
+            array('message' => 'Missing Required Parameters')
+        );
+            return;
+    }
     //Delete the post
     if($author_object->delete()) {
         $auth_item = array(

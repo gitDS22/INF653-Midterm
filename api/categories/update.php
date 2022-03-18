@@ -36,10 +36,9 @@
     }
     //Update the post
     if($category_object->update()) {
-        $category_object->read_single();
-        /*$cat_item = array(
+        $cat_item = array(
             'id' => $category_object->id,
             'category' => $category_object->category
         );
-        echo json_encode($cat_item);*/
+        echo json_encode($cat_item);
     } 

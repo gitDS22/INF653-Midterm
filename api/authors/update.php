@@ -36,10 +36,9 @@
     }
     //Update the post
     if($author_object->update()) {
-        $author_object->read_single();
-        /*$auth_item = array(
+        $auth_item = array(
             'id' => $author_object->id,
             'author' => $author_object->author   
         );
-        echo json_encode($auth_item);*/
+        echo json_encode($auth_item);
     } 

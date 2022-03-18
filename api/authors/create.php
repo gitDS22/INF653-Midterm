@@ -34,12 +34,11 @@
 
     //Create the author
     if($author_object->create()) {
-        $author_object->read_single();
-       /* $auth_item = array(
+       $auth_item = array(
             'id' => $author_object->id,
             'author' => $author_object->author   
         );
-        echo json_encode($auth_item);*/
+        echo json_encode($auth_item);
     } /*else {
         echo json_encode (
             array('message' => 'Missing Required Parameters')

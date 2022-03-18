@@ -114,6 +114,7 @@
 
             //execute query
             if ($stmt->execute()){
+                $this->id = $this->conn->lastInsertId();
                 return true;
             }
 
