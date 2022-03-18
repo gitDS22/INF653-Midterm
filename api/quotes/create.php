@@ -33,13 +33,13 @@
         );
             return;
     }
-    echo var_dump($data->quote);
-    echo var_dump($data->authorId);
-    echo var_dump($data->categoryId);
+    //echo var_dump($data->quote);
+    //echo var_dump($data->authorId);
+    //echo var_dump($data->categoryId);
 
-    echo var_dump($quote_object->quote);
-    echo var_dump($quote_object->authorId);
-    echo var_dump($quote_object->categoryId);
+    //echo var_dump($quote_object->quote);
+    //echo var_dump($quote_object->authorId);
+   // echo var_dump($quote_object->categoryId);
     //Create the post
     if($quote_object->create()) {
         echo var_dump($quote_object->id);

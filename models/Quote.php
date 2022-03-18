@@ -182,10 +182,10 @@
             $this->quote = htmlspecialchars(strip_tags($this->quote));
             $this->authorId = htmlspecialchars(strip_tags($this->authorId));
             $this->categoryId = htmlspecialchars(strip_tags($this->categoryId));
-            echo var_dump($this->quote);
-            echo var_dump($this->authorId);
-            echo var_dump($this->categoryId);
-            echo var_dump($this->conn->lastInsertId());
+            //echo var_dump($this->quote);
+            //echo var_dump($this->authorId);
+            //echo var_dump($this->categoryId);
+            //echo var_dump($this->conn->lastInsertId());
             //bind the data
             $stmt ->bindParam(':quote',$this->quote);
             $stmt ->bindParam(':authorId',$this->authorId);
