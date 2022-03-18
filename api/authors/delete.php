@@ -20,10 +20,10 @@
 
     //Get the raw posted data
     $data = json_decode(file_get_contents("php://input"));
-
+    
     //Set ID to update
     $author_object->id = $data->id;
-
+    echo var_dump($author_object->id);
     //validate the input
     if(empty($author_object->id)) {
         echo json_encode(
