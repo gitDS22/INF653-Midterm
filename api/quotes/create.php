@@ -42,7 +42,7 @@
    // echo var_dump($quote_object->categoryId);
     //Create the post
     if($quote_object->create()) {
-        echo var_dump($quote_object->id);
+        //echo var_dump($quote_object->id);
         $quote_item = array(
             'id' => $quote_object->id,
             'quote' => $quote_object->quote,
