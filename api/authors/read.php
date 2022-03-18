@@ -24,7 +24,7 @@
     if( $num > 0) {
         //initialize category array
         $auth_arr = array();
-        $auth_arr['data'] = array();
+        //$auth_arr['data'] = array();
 
         while($row = $result->fetch(PDO::FETCH_ASSOC)) {
             extract($row);
@@ -36,7 +36,8 @@
             );
 
             //Push to "data"
-            array_push($auth_arr['data'],$auth_item);
+            //array_push($auth_arr['data'],$auth_item);
+            array_push($auth_arr,$auth_item);
         }
         //turn it to JSON & output
         echo json_encode($auth_arr);
