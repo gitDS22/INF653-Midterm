@@ -16,7 +16,7 @@
     $db = $database->connect();
 
     //Instantiate category object
-    $author_object = new Category($db);
+    $author_object = new Author($db);
 
     //Get the raw posted data
     $data = json_decode(file_get_contents("php://input"));
