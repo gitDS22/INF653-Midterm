@@ -172,8 +172,7 @@
         //Create Quote
         public function create() {
             //Create query
-            $query = 'INSERT INTO ' . 
-                $this->table . 
+            $query = 'INSERT INTO ' . $this->table . 
                 ' (quote, authorId, categoryId) VALUES (:quote, :authorId, :categoryId)';
 
             //Prepare statement
@@ -186,7 +185,7 @@
             echo var_dump($this->quote);
             echo var_dump($this->authorId);
             echo var_dump($this->categoryId);
-
+            echo var_dump($this->conn->lastInsertId());
             //bind the data
             $stmt ->bindParam(':quote',$this->quote);
             $stmt ->bindParam(':authorId',$this->authorId);
@@ -199,7 +198,7 @@
             }
 
             //Print error if something goes wrong
-            printf("Error: %s.\n",$stmt->error);
+            //printf("Error: %s.\n",$stmt->error);
             return false;
         }
 
