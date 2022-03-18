@@ -61,7 +61,6 @@
             //Set properties
             $this->category = $row['category'];
 
-
         }
 
         //Create category
@@ -90,6 +89,7 @@
             //Print error if something goes wrong
             printf("Error: %s.\n",$stmt->error);
             return false;
+
         }
 
         //Update Category

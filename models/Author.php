@@ -13,7 +13,7 @@
         public function __construct($db) {
             $this->conn = $db;
         }
-
+        //GOOD
         //get authors
         public function read() {
             //create query
@@ -60,8 +60,6 @@
 
             //Set properties
             $this->author = $row['author'];
-
-
         }
 
         //Create author
