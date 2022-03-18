@@ -13,7 +13,7 @@ if ($method === 'GET' && isset($_GET['id']))
 {
    include_once 'read_single.php';
 }
-if($method === 'GET' && !isset($_GET['id']))
+else if($method === 'GET')
 {
     include_once 'read.php';
 }
