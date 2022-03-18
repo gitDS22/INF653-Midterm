@@ -12,26 +12,26 @@ if ($method === 'OPTIONS') {
 
 if ($method === 'GET' && isset($_GET['id']) )
 {
-   include_once 'read_single.php';
+    require 'read_single.php';
 }
 else if($method === 'GET')
 {
-    include_once 'read.php';
+    require 'read.php';
 }
 
 if($method === 'POST')
 {
-    include_once 'create.php';
+    require 'create.php';
 }
 
 if($method === 'PUT')
 {
     //run update
-    include_once 'update.php';
+    require 'update.php';
 }
 
 if($method === 'DELETE')
 {
     //run delete
-    include_once 'delete.php';
+    require 'delete.php';
 }
