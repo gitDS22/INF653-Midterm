@@ -32,6 +32,6 @@
         echo json_encode($quote_item);
     } else {
         echo json_encode (
-            array('message' => 'Missing Required Parameters')
+            array('message' => 'No Quotes Found')
         );
     }
