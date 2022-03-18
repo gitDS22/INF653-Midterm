@@ -37,8 +37,8 @@
             'id' => $author_object->id
         );
         echo json_encode($auth_item);
-    } else {
+    } /*else {
         echo json_encode (
             array('message' => 'Missing Required Parameters')
         );
-    }
+    }*/

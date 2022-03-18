@@ -33,11 +33,13 @@
         );
             return;
     }
+
+    
     
     //Create the post
     if($quote_object->create()) {
         $quote_item = array(
-            'id' => $id,
+            'id' => $quote_object->id,
             'quote' => $quote_object->quote,
             'authorId' => $quote_object->authorId,
             'categoryId' => $quote_object->categoryId

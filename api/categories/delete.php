@@ -36,7 +36,7 @@
         $cat_item = array(
             'id' => $category_object->id
         );
-        echo json_encode($cat_item);;
+        echo json_encode($cat_item);
     } /*else {
         echo json_encode (
             array('message' => 'Missing Required Parameters')

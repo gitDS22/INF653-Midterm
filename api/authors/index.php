@@ -4,8 +4,6 @@
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 
-include_once '../../config/Database.php';
-
 $method = $_SERVER['REQUEST_METHOD'];
 if ($method === 'OPTIONS') {
     header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
