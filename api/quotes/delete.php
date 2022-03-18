@@ -16,21 +16,22 @@
     $db = $database->connect();
 
     //Instantiate blog post object
-    $quote = new Quote($db);
+    $quote_object = new Quote($db);
 
     //Get the raw posted data
     $data = json_decode(file_get_contents("php://input"));
 
     //Set ID to update
-    $quote->id = $data->id;
+    $quote_object->id = $data->id;
 
     //Delete the post
-    if($quote->delete()) {
-        echo json_encode(
-            array('message' => 'Quote Deleted')
+    if($quote_object->delete()) {
+        $quote_item = array(
+            'id' => $quote_object->id
         );
+        echo json_encode($quote_item);
     } else {
         echo json_encode (
-            array('message' => 'Quote Not Deleted')
+            array('message' => 'Missing Required Parameters')
         );
     }

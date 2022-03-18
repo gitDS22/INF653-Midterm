@@ -16,21 +16,23 @@
     $db = $database->connect();
 
     //Instantiate blog author object
-    $author = new Author($db);
+    $author_object = new Author($db);
 
     //Get the raw category data
     $data = json_decode(file_get_contents("php://input"));
 
     //assign the data to author
-    $author->author = $data->author;
+    $author_object->author = $data->author;
 
-    //Create the category
-    if($category->create()) {
-        echo json_encode(
-            array('message' => 'Author Created')
+    //Create the author
+    if($author_object->create()) {
+        $auth_item = array(
+            'id' => $author_object->id,
+            'author' => $author_object->author   
         );
+        echo json_encode($auth_item);
     } else {
         echo json_encode (
-            array('message' => 'Author Not Created')
+            array('message' => 'Missing Required Parameters')
         );
     }

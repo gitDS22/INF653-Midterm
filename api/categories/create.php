@@ -16,21 +16,23 @@
     $db = $database->connect();
 
     //Instantiate blog category object
-    $category = new Category($db);
+    $category_object = new Category($db);
 
     //Get the raw category data
     $data = json_decode(file_get_contents("php://input"));
 
     //assign the data to category
-    $category->category = $data->category;
+    $category_object->category = $data->category;
 
     //Create the category
-    if($category->create()) {
-        echo json_encode(
-            array('message' => 'Category Created')
+    if($category_object->create()) {
+        $cat_item = array(
+            'id' => $category_object->id,
+            'category' => $category_object->category
         );
+        echo json_encode($cat_item);
     } else {
         echo json_encode (
-            array('message' => 'Category Not Created')
+            array('message' => 'Missing Required Parameters')
         );
     }

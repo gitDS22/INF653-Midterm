@@ -12,18 +12,18 @@
     $db = $database->connect();
 
     //Instantiate blog post object
-    $category = new Category($db);
+    $category_object = new Category($db);
 
     //Get ID from URL
-    $category->id = isset($_GET['id']) ? $_GET['id'] : die();
+    $category_object->id = isset($_GET['id']) ? $_GET['id'] : die();
 
     //Call read_single method from POST.php
-    $category->read_single();
+    $category_object->read_single();
 
     //json data, create array
     $cat_arr = array(
-        'id'=> $category->id,
-    'category' => $category->category,
+        'id'=> $category_object->id,
+        'category' => $category_object->category,
     
 );
 

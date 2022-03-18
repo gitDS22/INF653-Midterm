@@ -16,24 +16,26 @@
     $db = $database->connect();
 
     //Instantiate blog post object
-    $author = new Author($db);
+    $author_object = new Author($db);
 
     //Get the raw posted data
     $data = json_decode(file_get_contents("php://input"));
 
     //Set ID to update
-    $author->id = $data->id;
+    $author_object->id = $data->id;
 
-    //assign the data to post
-    $author->author = $data->author;
+    //assign the data to author
+    $author_object->author = $data->author;
 
     //Update the post
-    if($author->update()) {
-        echo json_encode(
-            array('message' => 'Author Updated')
+    if($author_object->update()) {
+        $auth_item = array(
+            'id' => $author_object->id,
+            'author' => $author_object->author   
         );
+        echo json_encode($auth_item);
     } else {
         echo json_encode (
-            array('message' => 'Author Not Updated')
+            array('message' => 'Missing Required Parameters')
         );
     }

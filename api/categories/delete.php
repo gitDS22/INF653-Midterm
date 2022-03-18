@@ -16,21 +16,22 @@
     $db = $database->connect();
 
     //Instantiate category object
-    $category = new Category($db);
+    $category_object = new Category($db);
 
     //Get the raw posted data
     $data = json_decode(file_get_contents("php://input"));
 
     //Set ID to update
-    $category->id = $data->id;
+    $category_object->id = $data->id;
 
     //Delete the post
-    if($category->delete()) {
-        echo json_encode(
-            array('message' => 'Category Deleted')
+    if($category_object->delete()) {
+        $cat_item = array(
+            'id' => $category_object->id
         );
+        echo json_encode($cat_item);;
     } else {
         echo json_encode (
-            array('message' => 'Category Not Deleted')
+            array('message' => 'Missing Required Parameters')
         );
     }

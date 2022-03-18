@@ -16,21 +16,22 @@
     $db = $database->connect();
 
     //Instantiate category object
-    $author = new Category($db);
+    $author_object = new Category($db);
 
     //Get the raw posted data
     $data = json_decode(file_get_contents("php://input"));
 
     //Set ID to update
-    $author->id = $data->id;
+    $author_object->id = $data->id;
 
     //Delete the post
-    if($author->delete()) {
-        echo json_encode(
-            array('message' => 'Author Deleted')
+    if($author_object->delete()) {
+        $auth_item = array(
+            'id' => $author_object->id
         );
+        echo json_encode($auth_item);
     } else {
         echo json_encode (
-            array('message' => 'Author Not Deleted')
+            array('message' => 'Missing Required Parameters')
         );
     }

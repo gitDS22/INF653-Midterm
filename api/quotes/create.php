@@ -16,23 +16,27 @@
     $db = $database->connect();
 
     //Instantiate blog post object
-    $quote = new Quote($db);
+    $quote_object = new Quote($db);
 
     //Get the raw posted data
     $data = json_decode(file_get_contents("php://input"));
 
-    //assign the data to post
-    $quote->quote = $data->quote;
-    $quote->authorId = $data->authorId;
-    $quote->categoryId = $data->categoryId;
+    //assign the data to quote
+    $quote_object ->quote = $data->quote;
+    $quote_object ->authorId = $data->authorId;
+    $quote_object ->categoryId = $data->categoryId;
 
     //Create the post
-    if($quote->create()) {
-        echo json_encode(
-            array('message' => 'Quote Created')
+    if($quote_object ->create()) {
+        $quote_item = array(
+            'id' => $quote_object->id,
+            'quote' => $quote_object->quote,
+            'authorId' => $quote_object->authorId,
+            'categoryId' => $quote_object->categoryId
         );
+        echo json_encode($quote_item);
     } else {
         echo json_encode (
-            array('message' => 'Quote Not Created')
+            array('message' => 'Missing Required Parameters')
         );
     }

@@ -12,10 +12,10 @@
     $db = $database->connect();
 
     //Instantiate Category object
-    $category = new Category($db);
+    $category_object = new Category($db);
 
     // Category read query
-    $result = $category->read();
+    $result = $category_object->read();
 
     //get row count
     $num = $result->rowCount();
@@ -44,6 +44,6 @@
     } else {
         //no categories
         echo json_encode(
-            array('message' => 'No Categories Found')
+            array('message' => 'categoryId Not Found')
         );
     }
