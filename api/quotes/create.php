@@ -22,9 +22,9 @@
     $data = json_decode(file_get_contents("php://input"));
 
     //assign the data to quote
-    $quote_object ->quote = $data->quote;
-    $quote_object ->authorId = $data->authorId;
-    $quote_object ->categoryId = $data->categoryId;
+    $quote_object->quote = $data->quote;
+    $quote_object->authorId = $data->authorId;
+    $quote_object->categoryId = $data->categoryId;
 
     //Create the post
     if($quote_object ->create()) {

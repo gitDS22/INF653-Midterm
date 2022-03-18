@@ -174,10 +174,9 @@
             //Create query
             $query = 'INSERT INTO ' . 
                 $this->table . '
-                SET
-                    quote = :quote,
-                    authorId = :authorId,
-                    categoryId = :categoryId';
+                    (quote, authorId, categoryId) 
+                VALUES 
+                    (:quote, :authorId, :categoryId)';
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
