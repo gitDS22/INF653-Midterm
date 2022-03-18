@@ -35,7 +35,7 @@
     }
     
     //Create the post
-    if($quote_object ->create()) {
+    if($quote_object->create()) {
         $quote_item = array(
             'id' => $quote_object->id,
             'quote' => $quote_object->quote,
