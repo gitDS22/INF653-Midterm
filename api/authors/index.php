@@ -19,18 +19,18 @@ else if($method === 'GET')
     include_once 'read.php';
 }
 
-if($method == 'POST')
+if($method === 'POST')
 {
     include_once 'create.php';
 }
 
-if($method == 'PUT')
+if($method === 'PUT')
 {
     //run update
     include_once 'update.php';
 }
 
-if($method == 'DELETE')
+if($method === 'DELETE')
 {
     //run delete
     include_once 'delete.php';
