@@ -26,9 +26,7 @@
         'id'=> $quote->id,
         'quote' => $quote->quote,
         'author' => $quote->author,
-        'authorId' => $quote->authorId,
-        'category' => $quote->category,
-        'categoryId' => $quote->categoryId
+        'category' => $quote->category
 );
 // BLog post query
 $result = $quote->read();
