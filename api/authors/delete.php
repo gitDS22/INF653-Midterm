@@ -23,7 +23,6 @@
     
     //Set ID to update
     $author_object->id = $data->id;
-    echo var_dump($data->id);
     //validate the input
     if(empty($author_object->id)) {
         echo json_encode(
@@ -37,8 +36,8 @@
             'id' => $author_object->id
         );
         echo json_encode($auth_item);
-    } else {
+    } /*else {
         echo json_encode (
             array('message' => 'Missing Required Parameters')
         );
-    }
+    }*/
