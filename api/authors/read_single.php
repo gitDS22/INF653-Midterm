@@ -19,7 +19,7 @@
 
     if($author->read_single()) {
         $auth_arr = array(
-            'id'=> $author->id,
+        'id'=> $author->id,
         'author' => $author->author
     );
     print_r(json_encode($auth_arr));

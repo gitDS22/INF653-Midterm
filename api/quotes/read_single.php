@@ -19,29 +19,23 @@
     
 
     //Call read_single method from POST.php
-    $quote->read_single();
-
-    //json data, create array
-    $quote_arr = array(
-        'id'=> $quote->id,
-        'quote' => $quote->quote,
-        'author' => $quote->author,
-        'category' => $quote->category
-);
-// BLog post query
-$result = $quote->read();
-
-//get row count
-$num = $result->rowCount();
-
-if( $num = 0) {
+    if($quote->read_single()) {
+        //json data, create array
+        $quote_arr = array(
+            'id'=> $quote->id,
+            'quote' => $quote->quote,
+            'author' => $quote->author,
+            'category' => $quote->category
+        );
+        //convert to JSON data
+        print_r(json_encode($quote_arr));
+    } else {
     echo json_encode(
         array('message' => 'No Quotes Found')
     );
-}
+    }
 
-    //convert to JSON data
-    print_r(json_encode($quote_arr));
+    
 
     
     /*//check if any posts

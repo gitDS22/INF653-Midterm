@@ -158,6 +158,18 @@
             //Execute query
             $stmt->execute();
 
+            if($stmt->rowCount() > 0){
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                $this->quote = $row['quote'];
+                $this->author = $row['author'];
+                $this->authorId = $row['authorId'];
+                $this->category = $row['category'];
+                $this->categoryId = $row['categoryId'];
+                return true;
+            }
+            return false;
+
+            /*
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             //Set properties
@@ -165,7 +177,7 @@
             $this->author = $row['author'];
             $this->authorId = $row['authorId'];
             $this->category = $row['category'];
-            $this->categoryId = $row['categoryId'];
+            $this->categoryId = $row['categoryId'];*/
 
         }
 
