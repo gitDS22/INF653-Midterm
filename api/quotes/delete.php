@@ -26,12 +26,12 @@
     //Get ID from URL if set
     $quote_object->id = isset($_GET['id']) ? $_GET['id'] : die();
     //validate the input
-    if(empty($quote_object->id)) {
+    /*if(empty($quote_object->id)) {
         echo json_encode(
             array('message' => 'Missing Required Parameters')
         );
             return;
-    }
+    }*/
     //Delete the post
     if($quote_object->delete()) {
         $quote_item = array(
