@@ -23,7 +23,7 @@
 
     //Set ID to update
     $quote_object->id = $data->id;
-
+    echo var_dump($quote_object->id);
     //validate the input
     if(empty($quote_object->id)) {
         echo json_encode(
