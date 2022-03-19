@@ -257,9 +257,9 @@
             $stmt = $this->conn->prepare($query);
             $this->id = htmlspecialchars(strip_tags($this->id));
             $stmt ->bindParam(':id',$this->id);
-            //$stmt->execute();
+            $stmt->execute();
 
-            if ($stmt->execute()){
+            if ($stmt->rowCount() > 0){
                
                 return true;
             }

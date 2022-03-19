@@ -18,8 +18,11 @@
     //Instantiate blog post object
     $quote_object = new Quote($db);
 
-    //Get ID from URL if set
-    $quote_object->id = isset($_GET['id']) ? $_GET['id'] : die();
+    //Get the raw posted data
+    $data = json_decode(file_get_contents("php://input"));
+
+    //Set ID to update
+    $quote_object->id = $data->id;
 
     //Delete the post
     if($quote_object->delete()) {
