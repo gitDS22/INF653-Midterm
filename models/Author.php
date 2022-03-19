@@ -53,13 +53,20 @@
             //Bind ID
             $stmt->bindParam(1,$this->id);
 
-            //Execute query
+            /*//Execute query
             $stmt->execute();
 
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             //Set properties
-            $this->author = $row['author'];
+            $this->author = $row['author'];*/
+            if($stmt->execute()){
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                $this->author = $row['author'];
+                return true;
+            }
+            return false;
+
         }
 
         //Create author

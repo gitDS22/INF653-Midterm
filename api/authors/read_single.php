@@ -17,7 +17,20 @@
     //Get ID from URL
     $author->id = isset($_GET['id']) ? $_GET['id'] : die();
 
-    //Call read_single method from POST.php
+    if($author->read_single()) {
+        $auth_arr = array(
+            'id'=> $author->id,
+        'author' => $author->author
+    );
+    print_r(json_encode($auth_arr));
+    }
+    else {
+        echo json_encode(
+            array('message' => 'authorId Not Found')
+        );
+    }
+
+    /*//Call read_single method from POST.php
     $author->read_single();
 
     //json data, create array
@@ -28,4 +41,4 @@
 );
 
     //convert to JSON data
-    print_r(json_encode($auth_arr));
+    print_r(json_encode($auth_arr));*/
