@@ -56,10 +56,17 @@
             //Execute query
             $stmt->execute();
 
+            /*
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             //Set properties
-            $this->category = $row['category'];
+            $this->category = $row['category'];*/
+            if($stmt->rowCount() > 0){
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                $this->category = $row['category'];
+                return true;
+            }
+            return false;
 
         }
 

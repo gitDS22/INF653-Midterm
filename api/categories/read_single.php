@@ -17,7 +17,21 @@
     //Get ID from URL
     $category_object->id = isset($_GET['id']) ? $_GET['id'] : die();
 
-    //Call read_single method from POST.php
+    if($category_object->read_single()) {
+        $cat_arr = array(
+            'id'=> $category_object->id,
+            'category' => $category_object->category
+        );
+        //convert to JSON data
+        print_r(json_encode($cat_arr));
+    }
+    else {
+        echo json_encode(
+            array('message' => 'categoryId Not Found')
+        );
+    }
+
+    /*//Call read_single method from POST.php
     $category_object->read_single();
 
     //json data, create array
@@ -28,4 +42,4 @@
 );
 
     //convert to JSON data
-    print_r(json_encode($cat_arr));
+    print_r(json_encode($cat_arr));*/
