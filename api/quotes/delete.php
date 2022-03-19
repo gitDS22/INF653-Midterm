@@ -20,6 +20,7 @@
 
     //Get ID from URL if set
     //$quote_object->id = isset($_GET['id']) ? $_GET['id'] : die();
+    $quote_object->id = ($_GET['id']);
     //Get the raw posted data
     $data = json_decode(file_get_contents("php://input"));
 
