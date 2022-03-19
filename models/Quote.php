@@ -266,8 +266,8 @@
             $stmt ->bindParam(':id',$this->id);
 
             //execute query
-            $stmt->execute();
-            if ($stmt->rowCount() > 0){
+            
+            if ($stmt->execute()){
                 return true;
             }
 

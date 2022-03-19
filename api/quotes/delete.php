@@ -25,7 +25,6 @@
     //$quote_object->id = $data->id;
     //Get ID from URL if set
     $quote_object->id = isset($_GET['id']) ? $_GET['id'] : die();
-    echo var_dump($quote_object->id);
     //validate the input
     if(empty($quote_object->id)) {
         echo json_encode(
