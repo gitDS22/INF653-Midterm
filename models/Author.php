@@ -53,14 +53,14 @@
             //Bind ID
             $stmt->bindParam(1,$this->id);
 
-            /*//Execute query
+            //Execute query
             $stmt->execute();
 
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            /*$row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             //Set properties
             $this->author = $row['author'];*/
-            if($stmt->execute()){
+            if($stmt->rowCount() > 0){
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
                 $this->author = $row['author'];
                 return true;
