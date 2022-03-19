@@ -253,23 +253,30 @@
 
         //Delete Post
         public function delete() {
-            //Create Query
-            
+            $query = 'DELETE FROM ' . $this->table . ' WHERE id = :id';
+            $stmt = $this->conn->prepare($query);
+            $this->id = htmlspecialchars(strip_tags($this->id));
+            $stmt ->bindParam(':id',$this->id);
+            //$stmt->execute();
+
+            if ($stmt->execute()){
+               
+                return true;
+            }
+            return false;
+            /*//Create Query
             $query1 = 'SELECT id FROM ' . $this->table . ' WHERE id = :id';
 
             //Prepare statement
-            
             $stmt1 = $this->conn->prepare($query1);
 
             //clean data
             $this->id = htmlspecialchars(strip_tags($this->id));
 
             //bind the data
-            
             $stmt1 ->bindParam(':id',$this->id);
 
             //execute query
-            
             $stmt1->execute();
             if ($stmt1->rowCount() > 0){
                 $query = 'DELETE FROM ' . $this->table . ' WHERE id = :id';
@@ -282,7 +289,7 @@
 
             //Print error if something goes wrong
             //printf("Error: %s.\n",$stmt->error);
-            return false;
+            return false;*/
 
         }
 
