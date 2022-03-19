@@ -19,13 +19,7 @@
     $quote_object = new Quote($db);
 
     //Get ID from URL if set
-    //$quote_object->id = isset($_GET['id']) ? $_GET['id'] : die();
-    $quote_object->id = ($_GET['id']);
-    //Get the raw posted data
-    $data = json_decode(file_get_contents("php://input"));
-
-    //Set ID to update
-    $quote_object->id = $data->id;
+    $quote_object->id = isset($_GET['id']) ? $_GET['id'] : die();
 
     //Delete the post
     if($quote_object->delete()) {
