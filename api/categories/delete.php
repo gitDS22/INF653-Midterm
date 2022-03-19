@@ -37,8 +37,8 @@
             'id' => $category_object->id
         );
         echo json_encode($cat_item);
-    } /*else {
+    } else {
         echo json_encode (
-            array('message' => 'Missing Required Parameters')
+            array('message' => 'No Category Found')
         );
-    }*/
+    }
