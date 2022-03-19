@@ -18,20 +18,9 @@
     //Instantiate blog post object
     $quote_object = new Quote($db);
 
-    //Get the raw posted data
-    $data = json_decode(file_get_contents("php://input"));
-
-    //Set ID to update
-    $quote_object->id = $data->id;
     //Get ID from URL if set
-    //$quote_object->id = isset($_GET['id']) ? $_GET['id'] : die();
-    //validate the input
-    /*if(empty($quote_object->id)) {
-        echo json_encode(
-            array('message' => 'Missing Required Parameters')
-        );
-            return;
-    }*/
+    $quote_object->id = isset($_GET['id']) ? $_GET['id'] : die();
+
     //Delete the post
     if($quote_object->delete()) {
         $quote_item = array(

@@ -255,19 +255,24 @@
         public function delete() {
             //Create Query
             $query = 'DELETE FROM ' . $this->table . ' WHERE id = :id';
+            $query1 = 'SELECT id FROM ' . $this->table . ' WHERE id = :id';
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
+            $stmt1 = $this->conn->prepare($query);
 
             //clean data
             $this->id = htmlspecialchars(strip_tags($this->id));
 
             //bind the data
             $stmt ->bindParam(':id',$this->id);
+            $stmt1 ->bindParam(':id',$this->id);
 
             //execute query
             
-            if ($stmt->execute()){
+            $stmt1->execute();
+            if ($stmt1->rowCount() > 0){
+                $stmt->execute();
                 return true;
             }
 
