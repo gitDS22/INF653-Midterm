@@ -44,29 +44,19 @@
             return;
     }
 
-    if($quote_author->read_single()) {
-        echo json_encode(
-            array('message' => 'authorId Found')
-        );
-    }
-    else {
+    if(!($quote_author->read_single())) {
         echo json_encode(
             array('message' => 'authorId Not Found')
         );
+        return;
     }
-
-    if($quote_category->read_single()) {
-        echo json_encode(
-            array('message' => 'categoryId Found')
-        );
-    }
-    else {
+    if(!($quote_category->read_single())) {
         echo json_encode(
             array('message' => 'categoryId Not Found')
         );
+        return;
     }
 
-   
     //Create the post
     if($quote_object->create()) {
         $quote_item = array(
