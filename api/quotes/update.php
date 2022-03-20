@@ -74,8 +74,8 @@
             'categoryId' => $quote_object->categoryId
         );
         echo json_encode($quote_item);
-    }else {
+    }/*else {
         echo json_encode(
             array('message' => 'No Quotes Found')
         );
-    }
+    }*/
