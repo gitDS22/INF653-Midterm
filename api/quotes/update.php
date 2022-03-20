@@ -46,6 +46,12 @@
         );
             return;
     }
+    if(!($quote_object->read_single())) {
+        echo json_encode(
+            array('message' => 'No Quotes Found')
+        );
+        return;
+    }
     if(!($quote_author->read_single())) {
         echo json_encode(
             array('message' => 'authorId Not Found')

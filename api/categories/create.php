@@ -38,8 +38,4 @@
             'category' => $category_object->category
         );
         echo json_encode($cat_item);
-    } /*else {
-        echo json_encode (
-            array('message' => 'Missing Required Parameters')
-        );
-    }*/
+    } 
