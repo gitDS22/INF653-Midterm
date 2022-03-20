@@ -228,7 +228,6 @@
             $stmt ->bindParam(':id',$this->id);
 
             //execute query
-            //$stmt->execute();
             if ($stmt->execute()){
                 return true;
             }
