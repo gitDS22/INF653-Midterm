@@ -168,17 +168,6 @@
                 return true;
             }
             return false;
-
-            /*
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            //Set properties
-            $this->quote = $row['quote'];
-            $this->author = $row['author'];
-            $this->authorId = $row['authorId'];
-            $this->category = $row['category'];
-            $this->categoryId = $row['categoryId'];*/
-
         }
 
         //Create Quote
@@ -194,10 +183,7 @@
             $this->quote = htmlspecialchars(strip_tags($this->quote));
             $this->authorId = htmlspecialchars(strip_tags($this->authorId));
             $this->categoryId = htmlspecialchars(strip_tags($this->categoryId));
-            //echo var_dump($this->quote);
-            //echo var_dump($this->authorId);
-            //echo var_dump($this->categoryId);
-            //echo var_dump($this->conn->lastInsertId());
+
             //bind the data
             $stmt ->bindParam(':quote',$this->quote);
             $stmt ->bindParam(':authorId',$this->authorId);
@@ -210,7 +196,7 @@
             }
 
             //Print error if something goes wrong
-            //printf("Error: %s.\n",$stmt->error);
+            printf("Error: %s.\n",$stmt->error);
             return false;
         }
 
@@ -247,50 +233,31 @@
             }
 
             //Print error if something goes wrong
-            //printf("Error: %s.\n",$stmt->error);
+            printf("Error: %s.\n",$stmt->error);
             return false;
         }
 
         //Delete Post
         public function delete() {
+            //Create Query
             $query = 'DELETE FROM ' . $this->table . ' WHERE id = :id';
-            $stmt = $this->conn->prepare($query);
-            $this->id = htmlspecialchars(strip_tags($this->id));
-            $stmt ->bindParam(':id',$this->id);
-            $stmt->execute();
-
-            if ($stmt->rowCount() > 0){
-               
-                return true;
-            }
-            return false;
-            /*//Create Query
-            $query1 = 'SELECT id FROM ' . $this->table . ' WHERE id = :id';
 
             //Prepare statement
-            $stmt1 = $this->conn->prepare($query1);
+            $stmt = $this->conn->prepare($query);
 
             //clean data
             $this->id = htmlspecialchars(strip_tags($this->id));
 
             //bind the data
-            $stmt1 ->bindParam(':id',$this->id);
+            $stmt ->bindParam(':id',$this->id);
 
             //execute query
-            $stmt1->execute();
-            if ($stmt1->rowCount() > 0){
-                $query = 'DELETE FROM ' . $this->table . ' WHERE id = :id';
-                $stmt = $this->conn->prepare($query);
-                $this->id = htmlspecialchars(strip_tags($this->id));
-                $stmt ->bindParam(':id',$this->id);
-                $stmt->execute();
+            $stmt->execute();
+
+            if ($stmt->rowCount() > 0){
                 return true;
             }
-
-            //Print error if something goes wrong
-            //printf("Error: %s.\n",$stmt->error);
-            return false;*/
-
+            return false;
         }
 
 
