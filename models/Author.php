@@ -141,7 +141,8 @@
             $stmt ->bindParam(':id',$this->id);
 
             //execute query
-            if ($stmt->execute()){
+            $stmt->execute();
+            if ($stmt->rowCount() >0){
                 return true;
             }
 

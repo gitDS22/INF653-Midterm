@@ -37,32 +37,4 @@
     
 
     
-    /*//check if any posts
-    if( $num > 0) {
-        //initialize post array
-        $quotes_arr = array();
-        $quotes_arr['data'] = array();
-
-        while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-            extract($row);
-
-            $quote_item = array(
-                'id' => $id,
-                'quote' => html_entity_decode($quote),
-                'author' => $author,
-                'authorId' => $authorId,
-                'category' => $category,
-                'categoryId' => $categoryId
-            );
-
-            //Push to "data"
-            array_push($quotes_arr['data'],$quote_item);
-        }
-        //turn it to JSON & output
-        echo json_encode($quotes_arr);
-    } else {
-        //no posts
-        echo json_encode(
-            array('message' => 'No Quotes Found')
-        );
-    }*/
+    

@@ -62,7 +62,7 @@
 
     //Update the quote
     if($quote_object->update()) {
-       $quote_item = array(
+        $quote_item = array(
             'id' => $quote_object->id,
             'quote' => $quote_object->quote,
             'authorId' => $quote_object->authorId,

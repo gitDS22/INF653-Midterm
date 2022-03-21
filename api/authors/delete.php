@@ -34,4 +34,6 @@
             'id' => $author_object->id
         );
         echo json_encode($auth_item);
-    } 
+    } else {
+        echo json_encode (array('message' => 'No Author Found'));
+    }
