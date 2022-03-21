@@ -28,24 +28,24 @@
                 q.authorId,
                 c.category as category,
                 q.categoryId
-            FROM
-                '. $this->table  .' q
-            LEFT JOIN
-                categories c ON q.categoryId = c.id
-            LEFT JOIN
-                authors a ON q.authorId = a.id
-            WHERE
-                q.authorId = ? AND q.categoryId = ?';
+                FROM
+                    '. $this->table  .' q
+                LEFT JOIN
+                    categories c ON q.categoryId = c.id
+                LEFT JOIN
+                    authors a ON q.authorId = a.id
+                WHERE
+                    q.authorId = ? AND q.categoryId = ?';
         
-            //prepare statement
-            $stmt = $this->conn->prepare($query);
+                //prepare statement
+                $stmt = $this->conn->prepare($query);
 
-            //Bind ID
-            $stmt->bindParam(1,$this->authorId);
-            $stmt->bindParam(2,$this->categoryId);
+                //Bind ID
+                $stmt->bindParam(1,$this->authorId);
+                $stmt->bindParam(2,$this->categoryId);
 
-            //Execute query
-            $stmt->execute();
+                //Execute query
+                $stmt->execute();
             }
             else if(isset($_GET['authorId'])){
                 $query = 'SELECT 
@@ -55,24 +55,24 @@
                 q.authorId,
                 c.category as category,
                 q.categoryId
-            FROM
-                '. $this->table  .' q
-            LEFT JOIN
-                categories c ON q.categoryId = c.id
-            LEFT JOIN
-                authors a ON q.authorId = a.id
-            WHERE
-                q.authorId = ?
-            ';
+                FROM
+                    '. $this->table  .' q
+                LEFT JOIN
+                    categories c ON q.categoryId = c.id
+                LEFT JOIN
+                    authors a ON q.authorId = a.id
+                WHERE
+                    q.authorId = ?
+                ';
         
-            //prepare statement
-            $stmt = $this->conn->prepare($query);
+                //prepare statement
+                $stmt = $this->conn->prepare($query);
 
-            //Bind ID
-            $stmt->bindParam(1,$this->authorId);
+                //Bind ID
+                $stmt->bindParam(1,$this->authorId);
 
-            //Execute query
-            $stmt->execute();
+                //Execute query
+                $stmt->execute();
             }
             else if(isset($_GET['categoryId'])){
                 $query = 'SELECT 
@@ -82,48 +82,48 @@
                 q.authorId,
                 c.category as category,
                 q.categoryId
-            FROM
-                '. $this->table  .' q
-            LEFT JOIN
-                categories c ON q.categoryId = c.id
-            LEFT JOIN
-                authors a ON q.authorId = a.id
-            WHERE
-                q.categoryId = ?
-            ';
+                FROM
+                    '. $this->table  .' q
+                LEFT JOIN
+                    categories c ON q.categoryId = c.id
+                LEFT JOIN
+                    authors a ON q.authorId = a.id
+                WHERE
+                    q.categoryId = ?
+                ';
         
-            //prepare statement
-            $stmt = $this->conn->prepare($query);
+                //prepare statement
+                $stmt = $this->conn->prepare($query);
 
-            //Bind ID
-            $stmt->bindParam(1,$this->categoryId);
+                //Bind ID
+                $stmt->bindParam(1,$this->categoryId);
 
-            //Execute query
-            $stmt->execute();
+                //Execute query
+                $stmt->execute();
             }
             
             else {
-            $query = 'SELECT 
-                q.id,
-                q.quote,
-                a.author as author,
-                q.authorId,
-                c.category as category,
-                q.categoryId
-            FROM
-                '. $this->table  .' q
-            LEFT JOIN
-                categories c ON q.categoryId = c.id
-            LEFT JOIN
-                authors a ON q.authorId = a.id
-            ORDER BY
-                q.id ASC';
+                $query = 'SELECT 
+                    q.id,
+                    q.quote,
+                    a.author as author,
+                    q.authorId,
+                    c.category as category,
+                    q.categoryId
+                FROM
+                    '. $this->table  .' q
+                LEFT JOIN
+                    categories c ON q.categoryId = c.id
+                LEFT JOIN
+                    authors a ON q.authorId = a.id
+                ORDER BY
+                    q.id ASC';
         
-            //prepare statement
-            $stmt = $this->conn->prepare($query);
+                //prepare statement
+                $stmt = $this->conn->prepare($query);
 
-            //Execute query
-            $stmt->execute();
+                //Execute query
+                $stmt->execute();
             }
             return $stmt;
         }

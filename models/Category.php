@@ -56,11 +56,6 @@
             //Execute query
             $stmt->execute();
 
-            /*
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            //Set properties
-            $this->category = $row['category'];*/
             if($stmt->rowCount() > 0){
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
                 $this->category = $row['category'];
@@ -152,7 +147,7 @@
             }
 
             //Print error if something goes wrong
-            //printf("Error: %s.\n",$stmt->error);
+            printf("Error: %s.\n",$stmt->error);
             return false;
 
         }
