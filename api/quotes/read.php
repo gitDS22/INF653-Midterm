@@ -11,7 +11,7 @@
     $database = new Database();
     $db = $database->connect();
 
-    //Instantiate blog post object
+    //Instantiate quote object
     $quote = new Quote($db);
 
     //Get authorID-categoryId from URL if set
@@ -27,41 +27,30 @@
     else if(isset($_GET['categoryId'])) {
         $quote->categoryId = isset($_GET['categoryId']) ? $_GET['categoryId'] : die();
     }
-    
 
-
-    // BLog post query
+    // quote query
     $result = $quote->read();
 
     //get row count
     $num = $result->rowCount();
 
-    //check if any posts
+    //check if any quotes
     if( $num > 0) {
-        //initialize post array
+        //initialize quotes array
         $quotes_arr = array();
-        //$quotes_arr['data'] = array();
-
         while($row = $result->fetch(PDO::FETCH_ASSOC)) {
             extract($row);
-
             $quote_item = array(
                 'id' => $id,
-                //'quote' => html_entity_decode($quote),
                 'quote' => $quote,
                 'author' => $author,
                 'category' => $category
             );
-
-            //Push to "data"
-            //array_push($quotes_arr['data'],$quote_item);
             array_push($quotes_arr,$quote_item);
         }
         //turn it to JSON & output
         echo json_encode($quotes_arr);
     } else {
-        //no posts
-        echo json_encode(
-            array('message' => 'No Quotes Found')
-        );
+        //if no quotes
+        echo json_encode(array('message' => 'No Quotes Found'));
     }

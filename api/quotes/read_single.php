@@ -11,14 +11,14 @@
     $database = new Database();
     $db = $database->connect();
 
-    //Instantiate blog post object
+    //Instantiate quote object
     $quote = new Quote($db);
 
     //Get ID from URL if set
     $quote->id = isset($_GET['id']) ? $_GET['id'] : die();
     
 
-    //Call read_single method from POST.php
+    //Call read_single method 
     if($quote->read_single()) {
         //json data, create array
         $quote_arr = array(
@@ -30,9 +30,8 @@
         //convert to JSON data
         print_r(json_encode($quote_arr));
     } else {
-    echo json_encode(
-        array('message' => 'No Quotes Found')
-    );
+        //if no quotes
+        echo json_encode(array('message' => 'No Quotes Found'));
     }
 
     
