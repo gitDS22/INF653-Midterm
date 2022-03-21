@@ -15,23 +15,22 @@
     $database = new Database();
     $db = $database->connect();
 
-    //Instantiate blog post object
+    //Instantiate quote object
     $quote_object = new Quote($db);
 
-    //Get the raw posted data
+    //Get the raw quote data
     $data = json_decode(file_get_contents("php://input"));
 
     //Set ID to update
     $quote_object->id = $data->id;
 
-    //Delete the post
+    //Delete the quote
     if($quote_object->delete()) {
         $quote_item = array(
             'id' => $quote_object->id
         );
         echo json_encode($quote_item);
     } else {
-        echo json_encode (
-            array('message' => 'No Quotes Found')
-        );
+        //if no quotes found
+        echo json_encode (array('message' => 'No Quotes Found'));
     }

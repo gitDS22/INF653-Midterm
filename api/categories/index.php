@@ -25,12 +25,10 @@ if($method === 'POST')
 
 if($method === 'PUT')
 {
-    //run update
     include_once 'update.php';
 }
 
 if($method === 'DELETE')
 {
-    //run delete
     include_once 'delete.php';
 }

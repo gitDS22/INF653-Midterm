@@ -13,7 +13,6 @@
         public function __construct($db) {
             $this->conn = $db;
         }
-        //GOOD
         //get authors
         public function read() {
             //create query
@@ -55,8 +54,6 @@
 
             //Execute query
             $stmt->execute();
-
-            /*$row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             //Set properties
             $this->author = $row['author'];*/
