@@ -15,7 +15,7 @@
     $database = new Database();
     $db = $database->connect();
 
-    //Instantiate category object
+    //Instantiate blog category object
     $category_object = new Category($db);
 
     //Get the raw category data
@@ -26,8 +26,10 @@
 
     //validate the input
     if(empty($category_object->category)) {
-        echo json_encode(array('message' => 'Missing Required Parameters'));
-        return;
+        echo json_encode(
+            array('message' => 'Missing Required Parameters')
+        );
+            return;
     }
     //Create the category
     if($category_object->create()) {

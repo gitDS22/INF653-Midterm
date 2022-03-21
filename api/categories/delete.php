@@ -18,7 +18,7 @@
     //Instantiate category object
     $category_object = new Category($db);
 
-    //Get the raw category data
+    //Get the raw posted data
     $data = json_decode(file_get_contents("php://input"));
 
     //Set ID to update
@@ -26,15 +26,19 @@
 
     //validate the input
     if(empty($category_object->id)) {
-        echo json_encode(array('message' => 'Missing Required Parameters'));
-        return;
+        echo json_encode(
+            array('message' => 'Missing Required Parameters')
+        );
+            return;
     }
-    //Delete the category
+    //Delete the post
     if($category_object->delete()) {
         $cat_item = array(
             'id' => $category_object->id
         );
         echo json_encode($cat_item);
     } else {
-        echo json_encode (array('message' => 'No Category Found'));
+        echo json_encode (
+            array('message' => 'No Category Found')
+        );
     }

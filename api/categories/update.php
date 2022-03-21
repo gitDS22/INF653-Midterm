@@ -15,24 +15,26 @@
     $database = new Database();
     $db = $database->connect();
 
-    //Instantiate category object
+    //Instantiate blog post object
     $category_object = new Category($db);
 
-    //Get the raw category data
+    //Get the raw posted data
     $data = json_decode(file_get_contents("php://input"));
 
     //Set ID to update
     $category_object->id = $data->id;
 
-    //assign the data to category
+    //assign the data to post
     $category_object->category = $data->category;
 
     //validate the input
     if(empty($category_object->category)) {
-        echo json_encode(array('message' => 'Missing Required Parameters'));
-        return;
+        echo json_encode(
+            array('message' => 'Missing Required Parameters')
+        );
+            return;
     }
-    //Update the category
+    //Update the post
     if($category_object->update()) {
         $cat_item = array(
             'id' => $category_object->id,

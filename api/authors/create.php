@@ -18,7 +18,7 @@
     //Instantiate blog author object
     $author_object = new Author($db);
 
-    //Get the raw author data
+    //Get the raw category data
     $data = json_decode(file_get_contents("php://input"));
 
     //assign the data to author
@@ -26,8 +26,10 @@
 
     //validate the input
     if(empty($author_object->author)) {
-        echo json_encode(array('message' => 'Missing Required Parameters'));
-        return;
+        echo json_encode(
+            array('message' => 'Missing Required Parameters')
+        );
+            return;
     }
 
     //Create the author
@@ -37,4 +39,8 @@
             'author' => $author_object->author   
         );
         echo json_encode($auth_item);
-    }
+    } /*else {
+        echo json_encode (
+            array('message' => 'Missing Required Parameters')
+        );
+    }*/
