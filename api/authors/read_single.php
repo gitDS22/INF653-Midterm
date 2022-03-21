@@ -11,34 +11,24 @@
     $database = new Database();
     $db = $database->connect();
 
-    //Instantiate blog post object
+    //Instantiate author object
     $author = new Author($db);
 
     //Get ID from URL
     $author->id = isset($_GET['id']) ? $_GET['id'] : die();
 
+    //create JSON array
     if($author->read_single()) {
         $auth_arr = array(
         'id'=> $author->id,
         'author' => $author->author
     );
+    //print array
     print_r(json_encode($auth_arr));
     }
+    //if the authorId is not found, display error
     else {
         echo json_encode(
             array('message' => 'authorId Not Found')
         );
     }
-
-    /*//Call read_single method from POST.php
-    $author->read_single();
-
-    //json data, create array
-    $auth_arr = array(
-        'id'=> $author->id,
-    'author' => $author->author,
-    
-);
-
-    //convert to JSON data
-    print_r(json_encode($auth_arr));*/

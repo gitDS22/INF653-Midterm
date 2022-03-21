@@ -14,36 +14,28 @@
     //Instantiate Author object
     $author = new Author($db);
 
-    // Category read query
+    // author read query
     $result = $author->read();
 
     //get row count
     $num = $result->rowCount();
 
-    //check if any categories
+    //check if any authors
     if( $num > 0) {
-        //initialize category array
+        //initialize author array
         $auth_arr = array();
-        //$auth_arr['data'] = array();
 
         while($row = $result->fetch(PDO::FETCH_ASSOC)) {
             extract($row);
-
             $auth_item = array(
                 'id' => $id,
                 'author' => $author
-                
             );
-
-            //Push to "data"
-            //array_push($auth_arr['data'],$auth_item);
             array_push($auth_arr,$auth_item);
         }
         //turn it to JSON & output
         echo json_encode($auth_arr);
-    } else {
-        //no categories
-        echo json_encode(
-            array('message' => 'No Authors Found')
-        );
+    }
+    else {
+        echo json_encode(array('message' => 'No Authors Found'));
     }
