@@ -15,29 +15,23 @@
     $database = new Database();
     $db = $database->connect();
 
-    //Instantiate category object
+    //Instantiate author object
     $author_object = new Author($db);
 
-    //Get the raw posted data
+    //Get the raw author data
     $data = json_decode(file_get_contents("php://input"));
     
     //Set ID to update
     $author_object->id = $data->id;
     //validate the input
     if(empty($author_object->id)) {
-        echo json_encode(
-            array('message' => 'Missing Required Parameters')
-        );
+        echo json_encode(array('message' => 'Missing Required Parameters'));
             return;
     }
-    //Delete the post
+    //Delete the author
     if($author_object->delete()) {
         $auth_item = array(
             'id' => $author_object->id
         );
         echo json_encode($auth_item);
-    } /*else {
-        echo json_encode (
-            array('message' => 'Missing Required Parameters')
-        );
-    }*/
+    } 

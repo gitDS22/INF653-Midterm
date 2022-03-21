@@ -15,10 +15,10 @@
     $database = new Database();
     $db = $database->connect();
 
-    //Instantiate blog author object
+    //Instantiate author object
     $author_object = new Author($db);
 
-    //Get the raw category data
+    //Get the raw author data
     $data = json_decode(file_get_contents("php://input"));
 
     //assign the data to author
@@ -26,9 +26,7 @@
 
     //validate the input
     if(empty($author_object->author)) {
-        echo json_encode(
-            array('message' => 'Missing Required Parameters')
-        );
+        echo json_encode(array('message' => 'Missing Required Parameters'));
             return;
     }
 
@@ -39,8 +37,4 @@
             'author' => $author_object->author   
         );
         echo json_encode($auth_item);
-    } /*else {
-        echo json_encode (
-            array('message' => 'Missing Required Parameters')
-        );
-    }*/
+    } 

@@ -15,10 +15,10 @@
     $database = new Database();
     $db = $database->connect();
 
-    //Instantiate blog post object
+    //Instantiate author object
     $author_object = new Author($db);
 
-    //Get the raw posted data
+    //Get the raw author data
     $data = json_decode(file_get_contents("php://input"));
 
     //Set ID to update
@@ -29,12 +29,10 @@
 
      //validate the input
      if(empty($author_object->author)) {
-        echo json_encode(
-            array('message' => 'Missing Required Parameters')
-        );
+        echo json_encode(array('message' => 'Missing Required Parameters'));
             return;
     }
-    //Update the post
+    //Update the author
     if($author_object->update()) {
         $auth_item = array(
             'id' => $author_object->id,
